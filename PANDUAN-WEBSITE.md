@@ -1,6 +1,6 @@
 # Belajar THT - ruang belajar Jennel
 
-Website statis untuk GitHub Pages, berisi 175 soal dari bank soal yang telah disusun.
+Website statis untuk GitHub Pages, berisi 175 soal. Bank aktif `klinis-v2` memuat revisi seluruh vignette dan pengecoh, teori inti, alasan setiap pilihan, serta poin penting belajar mandiri.
 
 ## Penggunaan
 
@@ -13,6 +13,18 @@ Website statis untuk GitHub Pages, berisi 175 soal dari bank soal yang telah dis
 - Tinjau pembahasan setelah selesai untuk membaca semua alasan, termasuk nomor yang belum dijawab.
 
 ## Progres dan offline
+
+## Leaderboard lokal dan cadangan
+
+Setelah menekan Selesai (serta konfirmasi bila ada soal kosong), sesi ditandai selesai dan nama diminta. Catatan hanya dibuat ketika nama valid disimpan. Menutup dialog atau memilih Simpan nanti belum mencatat skor; hasil yang sudah selesai dapat disimpan dari halaman hasil. ID percobaan mencegah pencatatan ganda pada sesi yang sama.
+
+Setiap catatan memuat nama, bab/mode, versi bank soal, tanggal, skor, dan jumlah benar/salah/kosong. Leaderboard disimpan pada peramban/perangkat yang sama; bukan penyimpanan server atau leaderboard bersama. Reset latihan tidak menghapus catatan. Penghapusan data peramban tetap dapat menghilangkan riwayat, sehingga ekspor cadangan berkala diperlukan.
+
+Gunakan Leaderboard > Ekspor cadangan untuk mengunduh JSON. Impor cadangan memvalidasi format, skor, nama, tanggal dan ID; data digabung tanpa menggandakan sesi yang sama. Konflik ID atau data tidak konsisten ditolak tanpa menimpa riwayat. Untuk pindah perangkat, pindahkan berkas ekspor dan impor pada peramban tujuan. Cadangan dapat berisi nama peserta: simpan dan bagikan sesuai kebutuhan pribadi.
+
+Peringkat secara default hanya membandingkan `klinis-v2`; tampilan semua versi merupakan riwayat. Soal yang berubah tidak boleh dihitung ulang memakai jawaban dari bank lama. Progres versi pertama dibiarkan pada kunci penyimpanan lamanya dan sesi v2 disimpan terpisah. Tidak ada data lama yang diam-diam digunakan untuk menghitung skor soal baru.
+
+## Progres latihan dan offline
 
 Progres tersimpan otomatis di `localStorage` per peramban/perangkat, terpisah untuk setiap topik dan sesi acak. Menutup tab lalu membuka situs kembali melanjutkan posisi terakhir. Menggunakan tombol Semua topik menyimpan sesi lalu kembali ke menu.
 
@@ -33,6 +45,7 @@ Website tidak memerlukan instalasi dependensi atau proses build. README yang sud
 - `index.html`, `styles.css`: tampilan.
 - `app.js`: interaksi dan penyimpanan.
 - `engine.mjs`: pemilihan soal, skor, validasi progres tersimpan.
+- `leaderboard.mjs`, `history-ui.mjs`: validasi riwayat, penyimpanan lokal, prompt nama, filter, ekspor/impor.
 - `data/chapter-1.json` sampai `chapter-7.json`: bank soal dan alasan setiap pilihan.
 - `sw.js`: cache offline untuk aset pada direktori situs ini.
 - `icon.svg`: ikon lokal.

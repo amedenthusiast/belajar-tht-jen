@@ -1,6 +1,6 @@
 // Pure quiz logic shared by the browser and the automated checks.
-export const STORAGE_KEY = 'belajar-tht-jen:progress:v1';
-export const VERSION = 1;
+export const STORAGE_KEY = 'belajar-tht-jen:progress:v2';
+export const VERSION = 2;
 export const SESSION_SIZE = 25;
 export const MODES = ['1', '2', '3', '4', '5', '6', '7', 'random'];
 
@@ -20,7 +20,8 @@ export function makeSession(mode, chapters, random = Math.random) {
   const pool = mode === 'random' ? chapters.flatMap(c => c.questions) : chapters.find(c => String(c.n) === mode)?.questions;
   if (!pool || pool.length < SESSION_SIZE) throw new Error('Materi belum lengkap.');
   const questions = mode === 'random' ? shuffled(pool, random).slice(0, SESSION_SIZE) : pool.slice(0, SESSION_SIZE);
-  return { ids: questions.map(q => q.id), answers: {}, index: 0, finished: false };
+  const attemptId=globalThis.crypto?.randomUUID?.() || `attempt_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+  return { attemptId, ids: questions.map(q => q.id), answers: {}, index: 0, finished: false, completedAt:null };
 }
 
 export function selectAnswer(session, id, choice) {
@@ -55,7 +56,10 @@ export function restoreState(raw, chapters) {
     if (!Number.isInteger(s.index) || s.index < 0 || s.index >= SESSION_SIZE || !s.answers || typeof s.answers !== 'object' || Array.isArray(s.answers)) continue;
     const answers = {};
     for (const id of s.ids) if (Number.isInteger(s.answers[id]) && s.answers[id] >= 0 && s.answers[id] < 5) answers[id] = s.answers[id];
-    clean.sessions[mode] = { ids: [...s.ids], index: s.index, answers, finished: s.finished === true };
+    if (typeof s.attemptId!=='string'||!/^[a-zA-Z0-9_-]{8,100}$/.test(s.attemptId)) continue;
+    const finished=s.finished===true;
+    if (finished && (typeof s.completedAt!=='string'||!Number.isFinite(Date.parse(s.completedAt)))) continue;
+    clean.sessions[mode] = { attemptId:s.attemptId, ids: [...s.ids], index: s.index, answers, finished, completedAt:finished?s.completedAt:null };
   }
   clean.lastMode = MODES.includes(parsed.lastMode) && clean.sessions[parsed.lastMode] ? parsed.lastMode : null;
   return clean;

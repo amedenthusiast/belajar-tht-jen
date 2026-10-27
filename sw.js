@@ -1,8 +1,8 @@
 // Cache only this project's public static files. No external domains are used.
 const PREFIX = 'belajar-tht-jen-';
-const CACHE = `${PREFIX}v2`;
+const CACHE = `${PREFIX}v3`;
 const BASE = new URL('./', self.location.href);
-const FILES = ['./','./index.html','./styles.css','./app.js','./engine.mjs','./icon.svg',...Array.from({length:7},(_,i)=>`./data/chapter-${i+1}.json`)];
+const FILES = ['./','./index.html','./styles.css','./app.js','./engine.mjs','./leaderboard.mjs','./history-ui.mjs','./icon.svg',...Array.from({length:7},(_,i)=>`./data/chapter-${i+1}.json`)];
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES.map(path=>new URL(path,BASE).href))).then(()=>self.skipWaiting()));
 });
