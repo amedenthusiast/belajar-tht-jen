@@ -116,7 +116,6 @@ main.addEventListener('click', event => {
     state.sessions[mode] = selectAnswer(session,id,Number(button.dataset.answer));
     persist();render();
     document.querySelector('#feedback-heading')?.focus({preventScroll:true});
-    document.querySelector('.feedback')?.scrollIntoView({block:'nearest',behavior:'instant'});
     return;
   }
   if (button.dataset.jump !== undefined && session) { session.index = Number(button.dataset.jump);persist();render();goTop();return; }
