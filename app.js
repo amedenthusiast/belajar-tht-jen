@@ -1,5 +1,5 @@
-import { STORAGE_KEY, MODES, emptyState, makeSession, selectAnswer, summarize, restoreState } from './engine.mjs';
-import {createHistoryUI} from './history-ui.mjs';
+import { STORAGE_KEY, MODES, emptyState, makeSession, selectAnswer, summarize, restoreState } from './engine.mjs?v=3';
+import {createHistoryUI} from './history-ui.mjs?v=3';
 
 const LABELS = ['Telinga, Pendengaran, dan Keseimbangan', 'Hidung dan Sinus Paranasal', 'Laring Faring', 'Bronkoesofagologi', 'Onkologi THT', 'Fasial Plastik Rekonstruksi', 'Lain-lain'];
 const REFERENCES = {
@@ -149,7 +149,7 @@ async function boot() {
     if (Object.keys(byId).length!==175 || chapters.some(c=>c.questions.length!==25)) throw new Error('Bank soal tidak lengkap.');
     let raw=null;try{raw=localStorage.getItem(STORAGE_KEY);}catch{storageAvailable=false;}
     state=restoreState(raw,chapters);updateStatus();render();
-    if ('serviceWorker' in navigator && location.protocol==='https:') navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).catch(()=>{/* Quiz and local progress remain usable without offline caching. */});
+    if ('serviceWorker' in navigator && location.protocol==='https:') navigator.serviceWorker.register('./sw.js?v=3',{updateViaCache:'none'}).catch(()=>{/* Quiz and local progress remain usable without offline caching. */});
   } catch {
     main.innerHTML='<section class="error-panel"><span class="eyebrow">MATERI BELUM TERMUAT</span><h1>Yuk, coba sekali lagi.</h1><p>Periksa koneksi internet. Saat pertama kali membuka situs, seluruh materi perlu dimuat terlebih dahulu.</p><button class="btn" id="retry">Muat ulang materi</button></section>';
     document.querySelector('#retry').addEventListener('click',()=>location.reload());status.textContent='Materi belum termuat';
