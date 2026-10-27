@@ -1,6 +1,6 @@
 // Local learning history. Imports are untrusted data and are validated before merging.
 export const LEADERBOARD_KEY = 'belajar-tht-jen:leaderboard:v1';
-export const BANK_VERSION = 'klinis-v2';
+export const BANK_VERSION = 'klinis-v3';
 export const BACKUP_FORMAT = 'belajar-tht-jen-leaderboard';
 export const TOPICS = ['Telinga, Pendengaran, dan Keseimbangan','Hidung dan Sinus Paranasal','Laring Faring','Bronkoesofagologi','Onkologi THT','Fasial Plastik Rekonstruksi','Lain-lain'];
 const MODES = ['1','2','3','4','5','6','7','random'];

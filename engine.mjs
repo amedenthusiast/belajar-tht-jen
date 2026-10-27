@@ -1,6 +1,6 @@
 // Pure quiz logic shared by the browser and the automated checks.
-export const STORAGE_KEY = 'belajar-tht-jen:progress:v2';
-export const VERSION = 2;
+export const STORAGE_KEY = 'belajar-tht-jen:progress:v3';
+export const VERSION = 3;
 export const SESSION_SIZE = 25;
 export const MODES = ['1', '2', '3', '4', '5', '6', '7', 'random'];
 

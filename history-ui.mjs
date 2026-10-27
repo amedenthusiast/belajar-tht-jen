@@ -1,4 +1,4 @@
-import {LEADERBOARD_KEY,BANK_VERSION,TOPICS,loadRecords,mergeRecords,recordFromFinishedSession,rankRecords,parseBackup,makeBackup} from './leaderboard.mjs?v=3';
+import {LEADERBOARD_KEY,BANK_VERSION,TOPICS,loadRecords,mergeRecords,recordFromFinishedSession,rankRecords,parseBackup,makeBackup} from './leaderboard.mjs?v=4';
 
 export function createHistoryUI({dialog,escape,onSaved}) {
   let records=[],readError='',filters={mode:'all',name:'',version:BANK_VERSION,sort:'score'};

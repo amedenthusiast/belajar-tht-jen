@@ -1,6 +1,6 @@
 # Belajar THT - ruang belajar Jennel
 
-Website statis untuk GitHub Pages, berisi 175 soal. Bank aktif `klinis-v2` memuat revisi seluruh vignette dan pengecoh, teori inti, alasan setiap pilihan, serta poin penting belajar mandiri.
+Website statis untuk GitHub Pages, berisi 175 soal. Bank aktif `klinis-v3` memuat revisi seluruh vignette dan pengecoh, 58 modul materi dengan tabel dan alur, alasan setiap pilihan, serta poin penting belajar mandiri.
 
 ## Penggunaan
 
@@ -22,7 +22,7 @@ Setiap catatan memuat nama, bab/mode, versi bank soal, tanggal, skor, dan jumlah
 
 Gunakan Leaderboard > Ekspor cadangan untuk mengunduh JSON. Impor cadangan memvalidasi format, skor, nama, tanggal dan ID; data digabung tanpa menggandakan sesi yang sama. Konflik ID atau data tidak konsisten ditolak tanpa menimpa riwayat. Untuk pindah perangkat, pindahkan berkas ekspor dan impor pada peramban tujuan. Cadangan dapat berisi nama peserta: simpan dan bagikan sesuai kebutuhan pribadi.
 
-Peringkat secara default hanya membandingkan `klinis-v2`; tampilan semua versi merupakan riwayat. Soal yang berubah tidak boleh dihitung ulang memakai jawaban dari bank lama. Progres versi pertama dibiarkan pada kunci penyimpanan lamanya dan sesi v2 disimpan terpisah. Tidak ada data lama yang diam-diam digunakan untuk menghitung skor soal baru.
+Peringkat secara default hanya membandingkan `klinis-v3`; tampilan semua versi merupakan riwayat. Soal yang berubah tidak boleh dihitung ulang memakai jawaban dari bank lama. Progres versi pertama dibiarkan pada kunci penyimpanan lamanya dan sesi v3 disimpan terpisah. Tidak ada data lama yang diam-diam digunakan untuk menghitung skor soal baru.
 
 ## Progres latihan dan offline
 
